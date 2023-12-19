@@ -10,22 +10,22 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import(/* webpackChunkName: "about" */ '../views/LogInView.vue')
+    component: () => import( '../views/LogInView.vue')
   },
   {
     path: '/addPost',
     name: 'addpost',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AddPostView.vue')
+    component: () => import( '../views/AddPostView.vue')
   },
   {
     path: "/apost/:id",
     name: "APost",
-    component: () => import(/* webpackChunkName: "about" */ '../views/APostView.vue'),
+    component: () => import( '../views/APostView.vue'),
   },
   {
     path: '/signup',
     name: 'signup',
-    component: () => import(/* webpackChunkName: "about" */ '../views/SignUpView.vue')
+    component: () => import( '../views/SignUpView.vue')
   },
   {
     path: '/contactus',

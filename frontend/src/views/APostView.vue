@@ -22,9 +22,8 @@
       return {
         post: {
           id: "",
-          title: "",
+          date: "",
           body: "",
-          urllink: "",
         },
       };
     },
