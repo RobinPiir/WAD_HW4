@@ -1,8 +1,12 @@
 <template>
     <footer class="footer">
         <p>
-            Authors: Robin Piir, Karolin Kerro, Roland-Carlis Vares
+            Authors: Robin Piir, Karolin Kerro, Roland-Carlis Vares<br>
+            <br>
         </p>
+        <b class="b">
+            <router-link to="/ContactUs">Contact Us</router-link>
+        </b>
     </footer>
 </template>
 
@@ -25,6 +29,10 @@ export default {
     background-color: #BED6B8;
     text-align: center;
     border-radius: 5px;
+}
+
+.b {
+    color: blue;
 }
 
 </style>
