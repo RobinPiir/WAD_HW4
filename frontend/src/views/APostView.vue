@@ -2,8 +2,6 @@
     <div class="A Post">
       <div id="form">
         <h3>A Post</h3>
-        <label for="date">Date: </label>
-        <input name="date" type="text" id="date" required v-model="post.date" />
         <label for="body">Body: </label>
         <input name="body" type="text" id="body" required v-model="post.body" />
       </div>
@@ -46,8 +44,6 @@
         })
           .then((response) => {
             console.log(response.data);
-            //this.$router.push("/apost/" + this.post.id);
-            // We are using the router instance of this element to navigate to a different URL location
             this.$router.push("/");
           })
           .catch((e) => {
