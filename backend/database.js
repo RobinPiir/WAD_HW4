@@ -24,15 +24,28 @@ const execute = async(query) => {
 // A simple query that creates a table in our database
 const createTblQuery = `
     CREATE TABLE IF NOT EXISTS "posttable" (
-	    "id" SERIAL PRIMARY KEY,         
-	    "date" VARCHAR(200) NOT NULL,
-	    "body" VARCHAR(200) NOT NULL
+        "id" SERIAL PRIMARY KEY,         
+        "date" VARCHAR(200) NOT NULL,
+        "body" VARCHAR(200) NOT NULL
+    );`;
+
+const createTblQueryAcc = `
+    CREATE TABLE IF NOT EXISTS "accounttable" (
+        "id" SERIAL PRIMARY KEY,         
+        "email" VARCHAR(200) NOT NULL,
+        "password" VARCHAR(200) NOT NULL
     );`;
 
 // A function to execute the previous query   
 execute(createTblQuery).then(result => {
     if (result) {
-        console.log('If does not exists, create the "posttable" table');
+        console.log('If does not exist, create the "posttable" table');
+    }
+});
+
+execute(createTblQueryAcc).then(result => {
+    if (result) {
+        console.log('If does not exist, create the "accounttable" table');
     }
 });
 
