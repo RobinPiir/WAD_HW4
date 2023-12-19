@@ -1,50 +1,44 @@
 <template>
     <body>
         <div class="contentfield">
-            <div class="container" v-for = "post in postList" :key="post.id">
-                <header class="box-header">
-                    <img class="profile" :src="getImgUrl(post.authorAvatar)" alt="pic" width="50" height="50">
-                    <p class="post-author">{{ post.authorName }}</p>
-                    <time class="post-date">{{ post.createTime }}</time>
-                </header>
-                <img class="box-image" v-if="post.image != null" :src="getImgUrl(post.image)" alt="pic">
-                <p class="comment">{{ post.body }}</p>
-                <footer class=box-footer>
-                <button class="like-button" @click="likePost(post)"><img src="../assets/like.png" alt="like-button" width="50" height="50" class="like-image">{{ post.likes }}</button>
-                </footer>
+            <div class="container" v-for="post in posts" :key="post.id">
+            <!-- / We are putting an anchor for each post, when we click on it, we will be directed to the specific post view (/apost/) /  -->
+                <a class="singlepost" :href="'/api/apost/' + post.id">
+                    <span class="post-date"> {{ post.date }} </span><br />
+                    <span class="comment">  {{ post.body }} </span> <br />
+                    <span class="url"> {{ post.urllink }} </span> <br />
+                </a>
             </div>
-            <button class="reset-button" @click="resetAllLikes"><h3>Reset all likes</h3></button>
         </div>
     </body>
 </template>
 
+
+
 <script>
 export default {
-    name: "PostsCompo",
-    data: function() {
-return {
-
-}},
-computed: {
-    postList(){
-        return this.$store.state.postList
-    }},
-methods: {
-    getImgUrl(pic) {
-    return require('../assets/'+pic)
+  name: "PostsCompo",
+  data() {
+    return {
+      posts: [],
+    };
+  },
+  methods: {
+    fetchPosts() {
+      // You should remember how Fetch API works
+      // fetch is a GET request unless stated otherwise. Therefore, it will fetch all posts from the database
+      fetch(`http://localhost:3000/api/posts/`)
+        .then((response) => response.json())
+        .then((data) => (this.posts = data))
+        .catch((err) => console.log(err.message));
     },
-    likePost(post) {
-      // Increment the likes for the clicked post
-      post.likes++;
-    },
-    resetAllLikes() {
-      // Reset all likes to their original values
-      this.postList.forEach(post => {
-        // Assuming you have an originalLikes property in each post
-        post.likes = 0
-      });
-    }}
-}
+  },
+  mounted() {
+    // call fetchPosts() when this element (AllPosts) mounts 
+    this.fetchPosts();
+    console.log("mounted");
+  },
+};
 </script>
 
 <style scoped>
