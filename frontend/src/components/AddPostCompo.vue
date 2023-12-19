@@ -19,7 +19,6 @@ export default {
       post: {
         date:"",
         body: "",
-        urllink: "",
       },
     };
   },
@@ -34,7 +33,6 @@ export default {
         var data = {
             date: this.post.date,
             body: this.post.body,
-            urllink: this.post.urllink,
       };
       // using Fetch - post method - send an HTTP post request to the specified URI with the defined body
       fetch("http://localhost:3000/api/posts", {

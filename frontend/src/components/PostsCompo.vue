@@ -6,7 +6,6 @@
                 <a class="singlepost" :href="'/api/apost/' + post.id">
                     <span class="post-date"> {{ post.date }} </span><br />
                     <span class="comment">  {{ post.body }} </span> <br />
-                    <span class="url"> {{ post.urllink }} </span> <br />
                 </a>
             </div>
         </div>

@@ -26,8 +26,7 @@ const createTblQuery = `
     CREATE TABLE IF NOT EXISTS "posttable" (
 	    "id" SERIAL PRIMARY KEY,         
 	    "date" VARCHAR(200) NOT NULL,
-	    "body" VARCHAR(200) NOT NULL,
-        "urllink" VARCHAR(200)  
+	    "body" VARCHAR(200) NOT NULL
     );`;
 
 // A function to execute the previous query   
