@@ -10,6 +10,9 @@
                 </a>
             </div>
         </div>
+        <router-link to="/addpost" custom v-slot="{ navigate }">
+        <button class="bottom-button" @click="navigate"><h3>Add Post</h3></button>
+        </router-link>
         <button class="bottom-button" @click="deletePosts"><h3>Delete all posts</h3></button>
     </body>
 </template>
