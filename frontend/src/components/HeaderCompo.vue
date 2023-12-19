@@ -1,16 +1,25 @@
 <template>
-    <nav class="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/login">Log in</router-link>
-    </nav>
-    <router-view/>
-  </template>
-
+  <nav class="nav">
+    <router-link to="/">Home</router-link> |
+    <router-link :to="loginLink">{{ loginText }}</router-link>
+  </nav>
+  <router-view/>
+</template>
 
 <script>
 export default {
-    name: 'HeaderCompo',
-}
+  name: 'HeaderCompo',
+  computed: {
+    loginText() {
+      const params = new URLSearchParams(window.location.search);
+      return params.has('email') && params.has('password') ? 'Logout' : 'Log in';
+    },
+    loginLink() {
+      const params = new URLSearchParams(window.location.search);
+      return params.has('email') && params.has('password') ? '/' : '/login';
+    }
+  }
+};
 </script>
 
 <style>
