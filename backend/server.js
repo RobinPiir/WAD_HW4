@@ -75,6 +75,37 @@ app.use(express.json());
         }
     });
 
+    // PUT (EDIT) POST BY ID
+
+    app.put('/api/posts/:id', async(req, res) => {
+        try {
+            const { id } = req.params;
+            const post = req.body;
+            console.log("update request has arrived");
+            const updatepost = await pool.query(
+                "UPDATE posttable SET (body) = ($3) WHERE id = $1", [id, post.date, post.body]
+            );
+            res.json(updatepost);
+        } catch (err) {
+            console.error(err.message);
+        }
+    });
+
+    // DELETE POST BY ID
+
+    app.delete('/api/posts/:id', async(req, res) => {
+        try {
+            const { id } = req.params;
+            //const post = req.body; // we do not need a body for a delete request
+            console.log("delete a post request has arrived");
+            const deletepost = await pool.query(
+                "DELETE FROM posttable WHERE id = $1", [id]
+            );
+            res.json(deletepost);
+        } catch (err) {
+            console.error(err.message);
+        }
+    }); 
 
 app.listen(port, () => {
     console.log("Server is listening to port " + port)
