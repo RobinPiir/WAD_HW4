@@ -10,6 +10,7 @@
                 </a>
             </div>
         </div>
+        <button class="bottom-button" @click="deletePosts"><h3>Delete all posts</h3></button>
     </body>
 </template>
 
@@ -32,6 +33,14 @@ export default {
         .then((data) => (this.posts = data))
         .catch((err) => console.log(err.message));
     },
+    deletePosts() {
+        fetch("http://localhost:3000/api/posts", {
+        method: "DELETE",
+          
+      })
+        .then((response) => response.json())
+        .catch((err) => console.log(err.message));
+    }
   },
   mounted() {
     // call fetchPosts() when this element (AllPosts) mounts 

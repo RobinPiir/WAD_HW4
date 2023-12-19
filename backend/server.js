@@ -44,6 +44,21 @@ app.use(express.json());
         }
     });
 
+    // DELETE ALL POSTS
+
+    app.delete('/api/posts', async (req, res) => {
+        try {
+          console.log("delete posts request has arrived");
+          const { rows: deletedPosts } = await pool.query(
+            "DELETE FROM posttable RETURNING *"
+          );
+          res.json(deletedPosts);
+        } catch (err) {
+          console.error(err.message);
+          res.status(500).send("Internal Server Error");
+        }
+      });
+
     // GET POST BY ID
 
     app.get('/api/posts/:id', async(req, res) => {
