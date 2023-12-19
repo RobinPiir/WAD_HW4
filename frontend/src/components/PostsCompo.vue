@@ -3,7 +3,7 @@
         <div class="contentfield">
             <div class="container" v-for="post in posts" :key="post.id">
             <!-- / We are putting an anchor for each post, when we click on it, we will be directed to the specific post view (/apost/) /  -->
-                <router-link class="singlepost" to="'/apost/' + post.id">
+                <router-link class="singlepost" :to="`/apost/${post.id}`">
                     <span class="post-date"> {{ post.date }} </span><br />
                     <span class="comment">  {{ post.body }} </span> <br />
                 </router-link>
