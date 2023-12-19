@@ -3,17 +3,16 @@
     <div>
       <p><strong>Welcome to the SignUp page!</strong></p>
     </div>
-    <form action="index.html">
+    <form @submit.prevent="SignUp">
       <div class="input-group">
         <label for="email">Email:</label>
-        <input type="email" name="email" id="email" placeholder="Email" required>
+        <input type="email" v-model="email" placeholder="Email" required>
       </div>
       <div class="input-group">
         <label for="password">Password:</label>
         <input
           type="password"
-          name="password"
-          id="password"
+          v-model="password"
           placeholder="Password"
           pattern="^(?=.*[A-Z])(?=.*[a-z].*[a-z])(?=.*\d)(?=.*_).{8,15}$"
           title="Password must meet the following criteria:
@@ -30,6 +29,49 @@
     </form>
   </div>
 </template>
+
+<script>
+
+
+export default {
+  name: "SignUp",
+
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+
+  methods: {
+    SignUp(event) {
+      event.preventDefault();
+      var data = {
+        email: this.email,
+        password: this.password,
+      };
+
+      fetch("http://localhost:3000/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: 'include', // Don't forget to specify this if you need cookies
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          this.$router.push("/");
+        })
+        .catch((error) => {
+          console.error('Fetch error:', error);
+        });
+    },
+  },
+};
+</script>
+
 
 <style scoped>
 .center {

@@ -5,7 +5,7 @@
             <!-- / We are putting an anchor for each post, when we click on it, we will be directed to the specific post view (/apost/) /  -->
                 <router-link class="singlepost" :to="`/apost/${post.id}`">
                     <span class="post-date"> {{ post.date }} </span><br />
-                    <span class="comment">  {{ post.body }} </span> <br />
+                    <span class="body">  {{ post.body }} </span> <br />
                 </router-link>
             </div>
         </div>
@@ -19,11 +19,14 @@
 
 
 <script>
+import auth from "../../auth";
+
 export default {
   name: "PostsCompo",
   data() {
     return {
       posts: [],
+      authResult: auth.authenticated()
     };
   },
   methods: {
@@ -118,6 +121,11 @@ body{
     text-align: left;
 }
 
+.body{
+    margin-left:30px;
+    margin-bottom:20px;
+}
+
 .profile{
     border: 1px solid gray;
     margin-left: 10px;
@@ -133,8 +141,13 @@ body{
 
 .post-date{
     vertical-align: middle;
+    margin-right:20px;
     margin-top: 20px;
     float: right;
+}
+
+.singlepost{
+    height: inherit;
 }
 
 .box-image{

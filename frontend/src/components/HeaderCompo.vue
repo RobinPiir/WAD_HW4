@@ -1,24 +1,48 @@
+
+
 <template>
   <nav class="nav">
     <router-link to="/">Home</router-link> |
-    <router-link :to="loginLink">{{ loginText }}</router-link>
+    <button v-if = "authResult" @click="Logout" class="center">Logout</button>
   </nav>
   <router-view/>
 </template>
 
 <script>
+import auth from "../../auth";
+
+
 export default {
   name: 'HeaderCompo',
-  computed: {
-    loginText() {
-      const params = new URLSearchParams(window.location.search);
-      return params.has('email') && params.has('password') ? 'Logout' : 'Log in';
-    },
-    loginLink() {
-      const params = new URLSearchParams(window.location.search);
-      return params.has('email') && params.has('password') ? '/' : '/login';
+  data: function() {
+    return {
+    posts:[ ],
+    authResult: auth.authenticated()
     }
-  }
+  },
+  methods: {
+    Logout() {
+      fetch("http://localhost:3000/auth/logout", {
+          credentials: 'include',
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        console.log('jwt removed');
+        this.$router.push("/login");
+      })
+      .catch((e) => {
+        console.log(e);
+        console.log("error logout");
+      });
+    },
+  }, 
+  mounted() {
+        fetch('https://jsonplaceholder.typicode.com/posts')
+        .then((response) => response.json())
+        .then(data => this.posts = data)
+        .catch(err => console.log(err.message))
+    }
 };
 </script>
 

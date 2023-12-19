@@ -3,7 +3,7 @@
       <div>
         <p><strong>Welcome to the LogIn page!</strong></p>
       </div>
-      <form action="index.html">
+      <form @submit.prevent="LogIn" action="index.html">
         <div class="input-group">
           <label for="email">Email:</label>
           <input type="email" name="email" id="email" placeholder="Email" required>
@@ -22,6 +22,50 @@
       </form>
     </div>
   </template>
+
+<script>
+export default {
+name: "LogIn", 
+
+data: function() {
+    return {
+   email: '',
+   password: '',
+  }
+  },
+  methods: {
+
+
+async LogIn(event) {
+      event.preventDefault();
+
+      var data = {
+        email: this.email,
+        password: this.password
+      };
+      await fetch("http://localhost:3000/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+          credentials: 'include', 
+          body: JSON.stringify(data),
+      })
+      .then((response) => response.json())
+      .then((data) => {
+      console.log(data);
+      //this.$router.push("/");
+      location.assign("/");
+      })
+      .catch((e) => {
+        console.log(e);
+        console.log("error");
+      });
+    },
+  }, 
+  }
+
+</script>
 
 <style scoped>
 .center {
