@@ -80,7 +80,8 @@
   #form {
     max-width: 420px;
     margin: 30px auto;
-    background: rgb(167, 154, 154);
+    border: 1px solid #646174;
+    background-color: #b1cda4;
     text-align: left;
     padding: 40px;
     border-radius: 10px;
