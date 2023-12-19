@@ -83,7 +83,7 @@ app.use(express.json());
             const post = req.body;
             console.log("update request has arrived");
             const updatepost = await pool.query(
-                "UPDATE posttable SET (body) = ($3) WHERE id = $1", [id, post.date, post.body]
+                "UPDATE posttable SET body = $3 WHERE id = $1", [id, post.date, post.body]
             );
             res.json(updatepost);
         } catch (err) {
