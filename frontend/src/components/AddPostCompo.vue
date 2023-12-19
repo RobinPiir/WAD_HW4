@@ -24,9 +24,9 @@ export default {
   },
   methods: {
     addPost() {
-        // Generate current date and time
+        // Generate current date
         const currentDate = new Date();
-        const formattedDate = currentDate.toISOString(); 
+        const formattedDate = currentDate.toISOString().split('T')[0];
 
         this.post.date = formattedDate;
 
