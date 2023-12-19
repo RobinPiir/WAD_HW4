@@ -30,10 +30,10 @@ const createTblQuery = `
     );`;
 
 const createTblQueryAcc = `
-    CREATE TABLE IF NOT EXISTS "accounttable" (
-        "id" SERIAL PRIMARY KEY,         
-        "email" VARCHAR(200) NOT NULL,
-        "password" VARCHAR(200) NOT NULL
+    CREATE TABLE IF NOT EXISTS "users" (
+        id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+        email VARCHAR(200) NOT NULL UNIQUE,
+        password VARCHAR(200) NOT NULL 
     );`;
 
 // A function to execute the previous query   
