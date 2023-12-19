@@ -56,132 +56,127 @@ export default {
 </script>
 
 <style scoped>
-
 * {
-    font-family: sans-serif;
-    box-sizing: border-box;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #DDFACD;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background-color: white;
+  margin-top: 7%;
+  width: 90%; /* Adjust as needed */
+  max-width: 1200px; /* Adjust as needed */
+  border: 1px solid gray;
+  box-shadow: 5px 5px 20px #888888;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+
+.contentfield {
+  background-color: #B1CDA4;
+  border: 1px solid black;
+  margin-top: 15px;
+  margin-bottom: 2em;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.profile {
+  border: 1px solid gray;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.post-author {
+  margin-left: 10px;
+}
+
+.post-date {
+  margin-top: 10px;
+  float: right;
+}
+
+.box-image {
+  border: 1px solid gray;
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.comment {
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+.like-button {
+  border: 1px solid #ccc;
+  background-color: white;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.like-image {
+  width: 1.5em;
+  height: auto;
+  opacity: 100%;
+}
+
+.like-button:hover > .like-image {
+  opacity: 70%;
+}
+
+.reset-button {
+  margin: 20px;
+  padding: 10px;
+}
+
+header time {
+  margin-right: 10px;
+  text-align: right;
+  display: block;
+  color: #646174;
+  font-size: 14px;
 }
 
 @media (min-width: 600px) {
-    .header,
-    .nav {
-        display: flex;
-    }
+  .header,
+  .nav {
+    display: flex;
+  }
 
-    .header {
-        flex-direction: column;
-        align-items: center;
-    }
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .contentfield{
-        width:60%;
-    }
+  .contentfield {
+    width: 60%;
+  }
 
-    .container{
-        width:inherit;
-    }
-
-}
-@media (min-width: 1000px) {
-    .contentfield{
-        display:flex;
-        width:60%;
-        height: auto;
-    }
-}
-
-body{
-    background-color: #DDFACD;
- }
-
-.contentfield{
-        background-color: #B1CDA4;
-        border: 1px solid black;
-        height: auto;
-        margin-top: 15px;
-        margin-left: auto;
-        margin-right: auto;
-        display:flex;
-        align-items: center;
-        flex-direction: column;
-        margin-bottom: 7em;
-    }
-
-.container{
-    background-color: white;
-    margin-top:7%;
+  .container {
     width: inherit;
-    min-width: 300px;
-    border:1px solid gray;
-    box-shadow: 5px 5px 20px #888888;
-    border-radius: 5px;
-    text-align: left;
+  }
 }
 
-.profile{
-    border: 1px solid gray;
-    margin-left: 10px;
-    margin-top: 10px;
+@media (min-width: 1000px) {
+  .contentfield {
+    display: flex;
+    width: 60%;
+    height: auto;
+  }
 }
-
-.post-author{
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 10px;
-    margin-bottom: 50px;
-}
-
-.post-date{
-    vertical-align: middle;
-    margin-top: 20px;
-    float: right;
-}
-
-.box-image{
-    border: 1px solid gray;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width:auto;
-    max-height: 20em;
-    max-width: 100%;
- }
-
-.comment{
-    margin-top: 20px;
-    margin-left: 40px;
-    vertical-align: top;
-}
-
-.like-button{
-    border:0px;
-    background-color: white;
-    margin-left: 30px;
-    margin-bottom: 10px;
-    padding:5px;
-    align-items: left;
-}
-
-
-.like-image{
-    width:2em;
-    height:auto;
-    opacity:100%;
-}
-
-.like-button:hover > .like-image{
-    opacity: 70%;
-}
-
-.reset-button{
-    margin: 20px;
-    padding: 10px;
-}
-
-header time{
-    margin-right: 35px;
-    text-align: right;
-    display: block;
-}
-
 </style>
