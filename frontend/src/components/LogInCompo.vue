@@ -10,9 +10,15 @@
         </div>
         <div class="input-group">
           <label for="password">Password:</label>
-          <input type="password" name="password" id="password" placeholder="Password" required>
+          <input type="password" name="password" placeholder="Password" required>
         </div>
-        <button type="submit">Log in</button>
+        <div class="button-group">
+          <button type="submit">Log in</button>
+          <span class="or-divider">or</span>
+          <router-link to="/signup">
+            <button type="submit">Sign up</button>
+          </router-link>
+        </div>
       </form>
     </div>
   </template>
